@@ -17,6 +17,8 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f9;
             color: #333;
+            padding: 0;
+            margin: 0;
         }
 
         /* Header */
@@ -28,7 +30,7 @@
         }
 
         header h1 {
-            font-size: 28px;
+            font-size: 24px;
             margin: 0;
         }
 
@@ -38,14 +40,15 @@
             padding: 10px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
-            padding: 10px 20px;
+            font-size: 14px;
+            padding: 8px 12px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
@@ -56,31 +59,32 @@
 
         /* Main Container */
         .container {
-            padding: 20px;
-            max-width: 1200px;
+            padding: 15px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .welcome {
             text-align: center;
             margin-bottom: 30px;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
         }
 
         .dashboard-sections {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
+            justify-content: center;
         }
 
         .section {
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1 1 calc(50% - 20px);
-            min-width: 300px;
+            padding: 15px;
+            width: 100%;
+            max-width: 480px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -90,14 +94,14 @@
         }
 
         .section h2 {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 15px;
             border-bottom: 2px solid #000;
             padding-bottom: 5px;
         }
 
         #calendar {
-            max-width: 100%;
+            width: 100%;
             margin-top: 20px;
         }
 
@@ -120,12 +124,12 @@
         }
 
         .case-item h3 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 5px;
         }
 
         .case-item .status {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             color: #333;
         }
@@ -133,7 +137,7 @@
         .case-item .btn-details {
             background-color: #000;
             color: #fff;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -150,7 +154,7 @@
             padding: 12px 24px;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             margin-top: 15px;
             transition: background-color 0.3s ease;
@@ -170,8 +174,18 @@
         }
 
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
             .dashboard-sections {
                 flex-direction: column;
+                align-items: center;
             }
 
             .case-item {
@@ -182,6 +196,15 @@
             .add-case-btn {
                 width: 100%;
             }
+
+            .case-item .btn-details {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -191,6 +214,7 @@
     </header>
     <nav>
         <a href="terms.html">terms</a>
+        <a href="#calendar">Calendar</a>
         <a href="#profile">Profile</a>
         <a href="#logout">Logout</a>
     </nav>
@@ -207,7 +231,7 @@
                     <!-- Case 1 -->
                     <li class="case-item">
                         <div>
-                            <h3>Case #001: read the terms and make sure they are right</h3>
+                            <h3>Case #001: check the terms</h3>
                             <p class="status">Status: Ongoing</p>
                         </div>
                         <button class="btn-details" onclick="viewCaseDetails(1)">View Details</button>
@@ -237,7 +261,6 @@
                 <h2>Calendar</h2>
                 <div id="calendar"></div>
             </div>
-
         </div>
     </div>
 
@@ -286,13 +309,11 @@
 
         // View Case Details Function
         function viewCaseDetails(caseId) {
-            // Placeholder functionality - could open a modal or redirect to a case page
             alert(`Viewing details for Case #00${caseId}`);
         }
 
         // Add Case Function
         function addCase() {
-            // Placeholder functionality for adding new case
             alert('Feature to add a new case is under development.');
         }
     </script>
