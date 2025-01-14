@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Dashboard - Case Section</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        .case-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .case-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .case-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .case-item h3 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .case-item p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .case-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-details,
+        .btn-update {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-details:hover,
+        .btn-update:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-update {
+            background-color: #28a745;
+        }
+
+        .btn-update:hover {
+            background-color: #218838;
+        }
+
+        .add-case-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-case-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-footer .btn-close {
+            padding: 10px 15px;
+            background-color: #ff4b5c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .modal-footer .btn-close:hover {
+            background-color: #e03c49;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .case-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .case-item h3 {
+                font-size: 18px;
+            }
+
+            .case-actions {
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .add-case-btn {
+                width: 100%;
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .btn-details,
+            .btn-update {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+
+            .add-case-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="section">
+            <h2>Active Cases</h2>
+            <ul class="case-list">
+                <!-- Case 1 -->
+                <li class="case-item">
+                    <div>
+                        <h3>Case #001: Contract Dispute</h3>
+                        <p>Status: Ongoing</p>
+                    </div>
+                    <div class="case-actions">
+                        <button class="btn-details" onclick="viewCaseDetails(1)">View Details</button>
+                        <button class="btn-update" onclick="updateCase(1)">Update</button>
+                    </div>
+                </li>
+                <!-- Case 2 -->
+                <li class="case-item">
+                    <div>
+                        <h3>Case #002: Corporate Law</h3>
+                        <p>Status: Pending</p>
+                    </div>
+                    <div class="case-actions">
+                        <button class="btn-details" onclick="viewCaseDetails(2)">View Details</button>
+                        <button class="btn-update" onclick="updateCase(2)">Update</button>
+                    </div>
+                </li>
+                <!-- Case 3 -->
+                <li class="case-item">
+                    <div>
+                        <h3>Case #003: Breach of Contract</h3>
+                        <p>Status: Closed</p>
+                    </div>
+                    <div class="case-actions">
+                        <button class="btn-details" onclick="viewCaseDetails(3)">View Details</button>
+                        <button class="btn-update" onclick="updateCase(3)">Update</button>
+                    </div>
+                </li>
+            </ul>
+            <button class="add-case-btn" onclick="addCase()">Add New Case</button>
+        </div>
+    </div>
+
+    <!-- Modal for Case Details -->
+    <div id="caseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Case Details</h2>
+            </div>
+            <div class="modal-body">
+                <p id="caseDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show case details in modal
+        function viewCaseDetails(caseId) {
+            let caseDetails = '';
+            switch (caseId) {
+                case 1:
+                    caseDetails = 'Case #001: Contract Dispute - The client is disputing a contract with a business partner over unpaid dues. Status: Ongoing. Next hearing on 15th February.';
+                    break;
+                case 2:
+                    caseDetails = 'Case #002: Corporate Law - A corporation facing issues with tax compliance. Status: Pending. Awaiting response from authorities.';
+                    break;
+                case 3:
+                    caseDetails = 'Case #003: Breach of Contract - A client suing a vendor for failure to deliver services. Status: Closed. Case resolved with a favorable outcome.';
+                    break;
+                default:
+                    caseDetails = 'No details available.';
+            }
+            document.getElementById('caseDetails').textContent = caseDetails;
+            document.getElementById('caseModal').style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('caseModal').style.display = 'none';
+        }
+
+        // Update Case Function
+        function updateCase(caseId) {
+            alert(`Updating Case #00${caseId}`);
+        }
+
+        // Add Case Function
+        function addCase() {
+            alert('Feature to add a new case is under development.');
+        }
+    </script>
+</body>
+</html>
