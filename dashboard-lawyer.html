@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        /* Main Container */
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .dashboard-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1 1 calc(50% - 20px);
+            min-width: 300px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+
+        #calendar {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Case List */
+        .case-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .case-item {
+            background-color: #f9f9f9;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .case-item .status {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .case-item .btn-details {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .case-item .btn-details:hover {
+            background-color: #444;
+        }
+
+        .add-case-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-case-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-sections {
+                flex-direction: column;
+            }
+
+            .case-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .add-case-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lawyer Dashboard</h1>
+    </header>
+    <nav>
+        <a href="terms.html">terms</a>
+        <a href="#profile">Profile</a>
+        <a href="#logout">Logout</a>
+    </nav>
+    <div class="container">
+        <div class="welcome">
+            Welcome, <strong>letlotlo</strong>! Manage your tasks efficiently.
+        </div>
+
+        <div class="dashboard-sections">
+            <!-- Cases Section -->
+            <div class="section" id="cases">
+                <h2>Cases</h2>
+                <ul class="case-list">
+                    <!-- Case 1 -->
+                    <li class="case-item">
+                        <div>
+                            <h3>Case #001: read the terms and make sure they are right</h3>
+                            <p class="status">Status: Ongoing</p>
+                        </div>
+                        <button class="btn-details" onclick="viewCaseDetails(1)">View Details</button>
+                    </li>
+                    <!-- Case 2 -->
+                    <li class="case-item">
+                        <div>
+                            <h3>Case #002: Corporate Law</h3>
+                            <p class="status">Status: Pending</p>
+                        </div>
+                        <button class="btn-details" onclick="viewCaseDetails(2)">View Details</button>
+                    </li>
+                    <!-- Case 3 -->
+                    <li class="case-item">
+                        <div>
+                            <h3>Case #003: Breach of Contract</h3>
+                            <p class="status">Status: Closed</p>
+                        </div>
+                        <button class="btn-details" onclick="viewCaseDetails(3)">View Details</button>
+                    </li>
+                </ul>
+                <button class="add-case-btn" onclick="addCase()">Add New Case</button>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="section" id="calendar-container">
+                <h2>Calendar</h2>
+                <div id="calendar"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Azura Group. All rights reserved.
+    </footer>
+
+    <!-- FullCalendar and Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.js"></script>
+    <script>
+        // Initialize Calendar with Improved Events
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Case #001: Meeting',
+                        start: '2025-01-15T10:00:00',
+                        end: '2025-01-15T11:00:00',
+                        description: 'Initial Consultation with Client A.'
+                    },
+                    {
+                        title: 'Case #002: Court Appearance',
+                        start: '2025-01-20T09:00:00',
+                        description: 'Court hearing for contract dispute.'
+                    },
+                    {
+                        title: 'Case #003: Final Settlement Discussion',
+                        start: '2025-01-22T14:00:00',
+                        end: '2025-01-22T15:00:00',
+                        description: 'Negotiations with opposing party.'
+                    }
+                ],
+                eventClick: function(info) {
+                    alert(info.event.title + ": " + info.event.extendedProps.description);
+                }
+            });
+            calendar.render();
+        });
+
+        // View Case Details Function
+        function viewCaseDetails(caseId) {
+            // Placeholder functionality - could open a modal or redirect to a case page
+            alert(`Viewing details for Case #00${caseId}`);
+        }
+
+        // Add Case Function
+        function addCase() {
+            // Placeholder functionality for adding new case
+            alert('Feature to add a new case is under development.');
+        }
+    </script>
+</body>
+</html>

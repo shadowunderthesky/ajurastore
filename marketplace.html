@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 2px solid #000;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-bar input:focus {
+            border-color: #555;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 2px solid #000;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            margin: 5px 0 10px;
+            color: #555;
+        }
+
+        .product-card .price {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-card button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .product-card button:hover {
+            background-color: #444;
+        }
+
+        footer {
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #000;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header nav a {
+                margin-left: 10px;
+                font-size: 14px;
+            }
+
+            .search-bar input {
+                width: 100%;
+            }
+
+            .product-card h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Ajura Marketplace</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">My Account</a>
+            <a href="#">Add Template</a>
+        </nav>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search templates..." onkeyup="filterProducts()">
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Business Template</h3>
+            <p>Professional layout for businesses.</p>
+            <div class="price">$25</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Portfolio Template</h3>
+            <p>Perfect for showcasing your work.</p>
+            <div class="price">$20</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>eCommerce Template</h3>
+            <p>Complete online store design.</p>
+            <div class="price">$30</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Landing Page</h3>
+            <p>Modern design for marketing campaigns.</p>
+            <div class="price">$15</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Blog Template</h3>
+            <p>Minimalistic and clean blog layout.</p>
+            <div class="price">$10</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Resume Template</h3>
+            <p>Highlight your skills and experience.</p>
+            <div class="price">$12</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Business Card Template</h3>
+            <p>Modern and professional business card.</p>
+            <div class="price">$8</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Newsletter Template</h3>
+            <p>Perfect for email campaigns.</p>
+            <div class="price">$18</div>
+            <button>View Template</button>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x150" alt="Template Image">
+            <h3>Portfolio Showcase</h3>
+            <p>Display your works in a stunning layout.</p>
+            <div class="price">$22</div>
+            <button>View Template</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Ajura Marketplace. All rights reserved.
+    </footer>
+
+    <script>
+        function filterProducts() {
+            let searchInput = document.getElementById('search').value.toLowerCase();
+            let productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(function(card) {
+                let productName = card.querySelector('h3').textContent.toLowerCase();
+                let productDescription = card.querySelector('p').textContent.toLowerCase();
+                if (productName.includes(searchInput) || productDescription.includes(searchInput)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

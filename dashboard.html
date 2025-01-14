@@ -1,0 +1,311 @@
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajura Store</title>
+   
+    <!-- Favicon -->
+    <link rel="icon" href="ajurastorelogo (1).webp" type="image/png">
+   
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #000;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #bbb;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            padding: 8px 15px;
+            font-size: 1rem;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+
+        /* Sections */
+        section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+        }
+
+        /* Trending Templates Section */
+        .trending-templates {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            text-align: center;
+            width: 100%;
+        }
+
+        .product h3 {
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .buy-button,
+        .preview-button {
+            padding: 14px 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 220px;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            background-color: #000;
+            color: white;
+            border: none;
+        }
+
+        .buy-button:hover {
+            background-color: #444;
+        }
+
+        .preview-button {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+
+        .preview-button:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+  
+<!-- Header -->
+<header>
+    <h1>Ajura Store</h1>
+    <nav>
+        <a href="aitemplatemaker.html">AI Template maker</a>
+        <a href="css-library.html">CSS Library</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <input type="text" class="search-bar" placeholder="Search...">
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Trending Templates Section -->
+    <section id="trending-products">
+        <h2>Trending Templates</h2>
+        <div class="trending-templates">
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 1">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 1</h3>
+                    <p>A modern, responsive CSS template for your website.</p>
+                    <div class="price">$29.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button" onclick="window.location.href='preview.html';">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 2">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 2</h3>
+                    <p>Elegant and minimal CSS template for your projects.</p>
+                    <div class="price">$39.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 3">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 3</h3>
+                    <p>Perfect for portfolio websites, fast loading and customizable.</p>
+                    <div class="price">$49.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 4">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 4</h3>
+                    <p>Versatile and stylish CSS template for modern websites.</p>
+                    <div class="price">$59.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 5">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 5</h3>
+                    <p>Professional, clean design for business websites.</p>
+                    <div class="price">$34.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <!-- New Products -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 6">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 6</h3>
+                    <p>A sleek and clean template with modern typography.</p>
+                    <div class="price">$45.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 7">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 7</h3>
+                    <p>A highly customizable template with a modern touch.</p>
+                    <div class="price">$59.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/300" alt="Product 8">
+                </div>
+                <div class="product-details">
+                    <h3>CSS Template 8</h3>
+                    <p>Perfect for landing pages with a clean design.</p>
+                    <div class="price">$39.99</div>
+                    <button class="buy-button">Buy Now</button>
+                    <button class="preview-button">Preview</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>© 2024 Ajura Store. All rights reserved. <a href="#">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
