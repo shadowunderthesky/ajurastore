@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajura - Home</title>
+    <link rel="icon" href="ajurastorelogo (1).webp" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fff;
+            overflow-x: hidden; /* Estää vaakasuoran vierityksen */
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 18px;
+        }
+
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo-container .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header .logo-container img {
+            width: 30px;
+            margin-left: 10px;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        .main-content {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            padding-top: 100px; /* Add space for fixed header */
+            flex-grow: 1; /* Ensures content takes up available space */
+            background-color: #fff;
+            overflow: hidden; /* Ei salli vieritystä alas */
+        }
+
+        .main-content h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .main-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+            margin-top: auto; /* Push the footer to the bottom */
+            z-index: 100;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        footer a:hover {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 16px;
+            }
+
+            .main-content h1 {
+                font-size: 40px;
+            }
+
+            .main-content p {
+                font-size: 20px;
+            }
+
+            .feature h3 {
+                font-size: 20px;
+            }
+
+            .feature p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature {
+                padding: 15px;
+            }
+
+            .main-content h1 {
+                font-size: 30px;
+            }
+
+            .main-content p {
+                font-size: 18px;
+            }
+
+            .feature h3 {
+                font-size: 18px;
+            }
+
+            .feature p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-text">Ajura</div>
+            <img src="ajurastorelogo (1).webp" alt="Ajura Logo">
+        </div>
+        <nav>
+            <a href="signin.html">Sign In</a>
+            <a href="singup.html">Sign Up</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Welcome to Ajura</h1>
+        <p>Your go-to destination for high-quality templates and website tools</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Custom Templates</h3>
+                <p>Create and customize your own templates with ease using our powerful editor and AI support.</p>
+            </div>
+            <div class="feature">
+                <h3>AI-Powered Design</h3>
+                <p>Leverage cutting-edge AI technology to generate and enhance your templates in no time.</p>
+            </div>
+            <div class="feature">
+                <h3>Seamless Integration</h3>
+                <p>Integrate your templates directly into your projects with simple and straightforward steps.</p>
+            </div>
+            <div class="feature">
+                <h3>Fast Updates</h3>
+                <p>Enjoy regular updates and improvements, keeping your templates fresh and current.</p>
+            </div>
+            <div class="feature">
+                <h3>Secure Data</h3>
+                <p>Your privacy and security are our top priorities. We ensure all your data is safe and protected.</p>
+            </div>
+            <div class="feature">
+                <h3>Multi-Device Support</h3>
+                <p>Access your templates and tools across different devices seamlessly, with full compatibility.</p>
+            </div>
+            <div class="feature">
+                <h3>Easy Collaboration</h3>
+                <p>Work with teams effortlessly by sharing templates, designs, and ideas in real-time.</p>
+            </div>
+            <div class="feature">
+                <h3>Interactive UI</h3>
+                <p>Enjoy a smooth, user-friendly interface designed to make your template creation process enjoyable.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ajura. All rights reserved. <a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a></p>
+    </footer>
+
+</body>
+</html>

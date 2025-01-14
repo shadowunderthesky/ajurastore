@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>   <link rel="icon" href="ajurastorelogo (1).webp" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            flex-direction: column;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 100px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1s;
+        }
+
+        .back-home {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.5s;
+        }
+
+        .back-home:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        .error-container img {
+            width: 150px;
+            margin-bottom: 30px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <h1>404</h1>
+        <p>Oops! Page not found.</p>
+        <a href="/" class="back-home">Back to Home</a>
+    </div>
+
+</body>
+</html>

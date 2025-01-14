@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Abstract Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 80px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .swirl {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 3px solid transparent;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: rotateSwirl 3s linear infinite;
+            opacity: 0.2;
+        }
+
+        .swirl:nth-child(1) {
+            width: 140px;
+            height: 140px;
+            animation-delay: 0s;
+            opacity: 0.3;
+        }
+
+        .swirl:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            animation-delay: -0.5s;
+            opacity: 0.2;
+        }
+
+        .swirl:nth-child(3) {
+            width: 220px;
+            height: 220px;
+            animation-delay: -1s;
+            opacity: 0.15;
+        }
+
+        .swirl-gradient {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            border-radius: 50%;
+            animation: pulse 2.5s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .text {
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            background: linear-gradient(90deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .by-azura {
+            position: absolute;
+            bottom: -40px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes rotateSwirl {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="swirl"></div>
+        <div class="swirl"></div>
+        <div class="swirl"></div>
+        <div class="swirl-gradient"></div>
+        <div class="text">Ajura</div>
+        <div class="by-azura">By Azura Group</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Library</title>   <link rel="icon" href="ajurastorelogo (1).webp" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        header {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* CSS Library Section */
+        .library-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Template Section */
+        .template-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .template-box {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .template-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .template-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .template-box h3 {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .template-box p {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        .view-btn {
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Button Section */
+        .button-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .button-section button {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #111;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .button-section button:hover {
+            background-color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .template-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .button-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .template-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .button-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .template-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Library</h1>
+</header>
+
+<!-- CSS Library Section -->
+<div class="library-section">
+    <!-- Section Header for Templates -->
+    <div class="section-header">
+        <h2>Our Featured Templates</h2>
+        <p>Browse through a variety of templates for different use cases.</p>
+    </div>
+
+    <!-- Template Section -->
+    <div class="template-section">
+        <!-- Template Box 1 -->
+        <div class="template-box">
+            <img src="template1.jpg" alt="Template 1">
+            <h3>Template 1</h3>
+            <p>Modern and clean design</p>
+            <button class="view-btn" onclick="window.location.href='template1.html'">View Template</button>
+        </div>
+
+        <!-- Template Box 2 -->
+        <div class="template-box">
+            <img src="template2.jpg" alt="Template 2">
+            <h3>Template 2</h3>
+            <p>Creative and responsive layout</p>
+            <button class="view-btn" onclick="window.location.href='template2.html'">View Template</button>
+        </div>
+
+        <!-- Template Box 3 -->
+        <div class="template-box">
+            <img src="template3.jpg" alt="Template 3">
+            <h3>Template 3</h3>
+            <p>Professional business theme</p>
+            <button class="view-btn" onclick="window.location.href='template3.html'">View Template</button>
+        </div>
+
+        <!-- Template Box 4 -->
+        <div class="template-box">
+            <img src="template4.jpg" alt="Template 4">
+            <h3>Template 4</h3>
+            <p>Elegant portfolio design</p>
+            <button class="view-btn" onclick="window.location.href='template4.html'">View Template</button>
+        </div>
+    </div>
+
+    <!-- Section Header for Buttons -->
+    <div class="section-header">
+        <h2>CSS Buttons</h2>
+        <p>Check out some stylish and functional CSS buttons below.</p>
+    </div>
+
+    <!-- Button Section -->
+    <div class="button-section">
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+        <button>Button 4</button>
+        <button>Button 5</button>
+        <button>Button 6</button>
+        <button>Button 7</button>
+        <button>Button 8</button>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajura - Loading</title>   <link rel="icon" href="ajurastorelogo (1).webp" type="image/png">
+    <style>
+          
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ajura Logo (Tekstinä) */
+        .ajura-logo {
+            font-size: 50px;
+            font-weight: bold;
+            color: #000;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInLogo 2s ease-out;
+        }
+
+        /* Latauspyörä */
+        .loading-circle {
+            width: 80px;
+            height: 80px;
+            border: 8px solid #000;
+            border-top: 8px solid #fff;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Ajura Teksti */
+        .ajura-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            animation: fadeInText 1.5s ease-out;
+        }
+
+        /* Animaatio pyörimiselle */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animaatio logolle */
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animaatio tekstille */
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="loading-container">
+    <!-- Ajura Logo (Teksti) -->
+    <div class="ajura-logo">
+        Ajura
+    </div>
+    
+    <!-- Latauspyörä -->
+    <div class="loading-circle"></div>
+    
+    <!-- Ajura Teksti -->
+    <div class="ajura-text">
+        Loading your template...
+    </div>
+</div>
+
+</body>
+</html>
