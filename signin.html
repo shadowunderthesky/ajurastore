@@ -114,26 +114,12 @@
             const user = users.find(user => user.username === username && user.password === password);
 
             if (user) {
-                // Redirect based on role
-                switch (user.role) {
-                    case 'user':
-                        alert('Welcome, user! Redirecting to your dashboard...');
-                        // Replace with actual redirection logic
-                        window.location.href = 'dashboard.html';
-                        break;
-                    case 'lawyer':
-                        alert('Welcome, lawyer! Redirecting to your dashboard...');
-                        // Replace with actual redirection logic
-                        window.location.href = 'dashboard-lawyer.html';
-                        break;
-                    case 'admin':
-                        alert('Welcome, admin! Redirecting to admin panel...');
-                        // Replace with actual redirection logic
-                        window.location.href = 'admin-dashboard.html';
-                        break;
-                    default:
-                        errorMessage.textContent = 'Unknown role. Please contact support.';
-                }
+                // Save user details to localStorage
+                localStorage.setItem('username', user.username);
+                localStorage.setItem('role', user.role);
+
+                // Redirect to animation page
+                window.location.href = 'animation.html';
             } else {
                 errorMessage.textContent = 'Invalid username or password.';
             }
