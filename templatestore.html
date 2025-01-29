@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajura Template Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fixed and optimized CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 2rem;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 2rem;
+            color: white;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #1e293b;
+        }
+
+        .store-container {
+            padding: 100px 5% 50px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .filter-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 2rem;
+        }
+
+        .filter-group h3 {
+            color: #818cf8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .template-card {
+            background: #1e293b;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .template-preview {
+            height: 200px;
+            background: #334155;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #ef4444;
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .template-info {
+            padding: 1.5rem;
+        }
+
+        .template-price {
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .cart-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: #1e293b;
+            padding: 2rem;
+            transition: 0.3s;
+            z-index: 1001;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        }
+
+        .cart-open .cart-sidebar {
+            right: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .checkout-btn {
+            background: #10b981;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .store-container {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+            
+            .navbar {
+                flex-wrap: wrap;
+                padding: 1rem 5%;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 1rem 0 0;
+                width: 100%;
+            }
+            
+            .nav-links {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">AJURA</div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search templates...">
+        </div>
+        <div class="nav-links">
+            <a href="#categories">Categories</a>
+            <a href="#new">New</a>
+            <a href="#cart">Cart (<span class="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <div class="store-container">
+        <aside class="filter-sidebar">
+            <div class="filter-group">
+                <h3>Categories</h3>
+                <label class="filter-item">
+                    <input type="checkbox" value="portfolio"> Portfolio (12)
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="ecommerce"> E-commerce (8)
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="blog"> Blog (5)
+                </label>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <input type="range" min="0" max="500" value="500" id="priceRange">
+                <div class="price-display">Max: $<span id="priceValue">500</span></div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="template-grid">
+                <!-- Template Cards -->
+                <div class="template-card" data-price="49.99" data-category="portfolio">
+                    <div class="template-preview">
+                        <div class="badge">BESTSELLER</div>
+                    </div>
+                    <div class="template-info">
+                        <h3>Modern Portfolio Pro</h3>
+                        <p>Responsive portfolio template with 3D elements</p>
+                        <div class="template-price">$49.99</div>
+                        <button class="cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="template-card" data-price="129.99" data-category="ecommerce">
+                    <div class="template-preview">
+                        <div class="badge">SALE</div>
+                    </div>
+                    <div class="template-info">
+                        <h3>E-Shop Ultra</h3>
+                        <p>Complete e-commerce solution with dashboard</p>
+                        <div class="template-price">$129.99</div>
+                        <button class="cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Additional templates -->
+                <div class="template-card" data-price="89.99" data-category="blog">
+                    <div class="template-preview">
+                        <div class="badge">NEW</div>
+                    </div>
+                    <div class="template-info">
+                        <h3>Minimal Blog Pro</h3>
+                        <p>Clean blogging template with newsletter integration</p>
+                        <div class="template-price">$89.99</div>
+                        <button class="cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="template-card" data-price="199.99" data-category="portfolio">
+                    <div class="template-preview">
+                        <div class="badge">PREMIUM</div>
+                    </div>
+                    <div class="template-info">
+                        <h3>Creative Studio</h3>
+                        <p>Art portfolio template with parallax effects</p>
+                        <div class="template-price">$199.99</div>
+                        <button class="cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="cart-sidebar">
+        <h2>Shopping Cart</h2>
+        <div class="cart-items"></div>
+        <div class="cart-total" style="margin: 1rem 0; font-weight: bold;"></div>
+        <button class="cart-btn checkout-btn">Checkout Now</button>
+    </div>
+
+    <script>
+        // Enhanced JavaScript
+        let cart = [];
+        const updateCart = () => {
+            document.querySelector('.cart-count').textContent = cart.length;
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+            
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <div>${item.name}</div>
+                    <div>$${item.price}</div>
+                    <button onclick="removeFromCart(${index})" style="color: #ef4444">×</button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        };
+
+        const addToCart = (name, price) => {
+            cart.push({ name, price });
+            updateCart();
+        };
+
+        const removeFromCart = (index) => {
+            cart.splice(index, 1);
+            updateCart();
+        };
+
+        // Event Listeners
+        document.querySelectorAll('.cart-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.template-card');
+                const name = card.querySelector('h3').textContent;
+                const price = card.querySelector('.template-price').textContent.replace('$','');
+                addToCart(name, price);
+            });
+        });
+
+        // Price Filter
+        const priceRange = document.getElementById('priceRange');
+        const priceValue = document.getElementById('priceValue');
+        
+        priceRange.addEventListener('input', () => {
+            priceValue.textContent = priceRange.value;
+            document.querySelectorAll('.template-card').forEach(card => {
+                const price = parseFloat(card.dataset.price);
+                card.style.display = price <= priceRange.value ? 'block' : 'none';
+            });
+        });
+
+        // Category Filter
+        document.querySelectorAll('.filter-item input').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const selectedCategories = Array.from(document.querySelectorAll('.filter-item input:checked'))
+                    .map(cb => cb.value);
+                
+                document.querySelectorAll('.template-card').forEach(card => {
+                    const category = card.dataset.category;
+                    const show = selectedCategories.length === 0 || selectedCategories.includes(category);
+                    card.style.display = show ? 'block' : 'none';
+                });
+            });
+        });
+// Enhanced Search Functionality
+document.querySelector('.search-input').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.trim().toLowerCase();
+    const priceFilter = parseFloat(priceRange.value);
+    const activeCategories = Array.from(document.querySelectorAll('.filter-item input:checked'))
+                                .map(cb => cb.value);
+
+    document.querySelectorAll('.template-card').forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        const price = parseFloat(card.dataset.price);
+        const category = card.dataset.category;
+
+        const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+        const matchesPrice = price <= priceFilter;
+        const matchesCategory = activeCategories.length === 0 || activeCategories.includes(category);
+
+        card.style.display = (matchesSearch && matchesPrice && matchesCategory) ? 'block' : 'none';
+    });
+});
+        // Cart Toggle
+        document.querySelector('[href="#cart"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('cart-open');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ajura Platform</title>
+    <style>
+        :root {
+            --primary-color: rgba(139, 92, 246, 0.8);
+            --secondary-color: rgba(30, 41, 59, 0.9);
+            --text-light: #f8fafc;
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: linear-gradient(45deg, #0f172a, #1e293b);
+            min-height: 100vh;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(139, 92, 246, 0.1) 0%, 
+                rgba(139, 92, 246, 0) 70%);
+            animation: pulse 8s infinite ease-in-out;
+            z-index: -2;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            color: #cbd5e1;
+            opacity: 0.9;
+        }
+
+        .feature-cube {
+            width: 200px;
+            height: 200px;
+            margin: 3rem auto;
+            transform-style: preserve-3d;
+            animation: cubeRotate 20s infinite linear;
+            cursor: pointer;
+            transition: transform var(--transition-base);
+        }
+
+        @keyframes cubeRotate {
+            from { transform: rotateX(15deg) rotateY(0deg); }
+            to { transform: rotateX(15deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backface-visibility: hidden;
+            transition: all var(--transition-base);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--secondary-color);
+            border-radius: 1rem;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-statement ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mission-statement li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .mission-statement li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            background: var(--secondary-color);
+            border-radius: 1rem;
+            transition: transform var(--transition-base);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .team-member {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            transition: transform var(--transition-base);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1rem;
+            filter: grayscale(20%);
+            transition: filter var(--transition-base);
+        }
+
+        .team-member:hover img {
+            filter: grayscale(0%);
+        }
+
+        .team-member figcaption {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .feature-cube {
+                width: 150px;
+                height: 150px;
+            }
+
+            .cube-face {
+                font-size: 1rem;
+            }
+
+            .stats-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .feature-cube {
+                animation: none;
+            }
+            
+            .mission-statement::before {
+                animation: none;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+    <!-- Add Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero">
+        <h1>Empowering Digital Creators</h1>
+        <p class="tagline">Ajura Platform bridges imagination and reality through cutting-edge design solutions</p>
+        
+        <div class="feature-cube" aria-hidden="true">
+            <div class="cube-face front">Innovation</div>
+            <div class="cube-face back">Creativity</div>
+            <div class="cube-face right">Technology</div>
+            <div class="cube-face left">Design</div>
+            <div class="cube-face top">Ajura</div>
+            <div class="cube-face bottom">AZURA group</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="mission-statement" aria-labelledby="vision-heading">
+            <h2 id="vision-heading">Our Vision</h2>
+            <p>At Ajura Platform, we're revolutionizing digital creation by merging artificial intelligence with human creativity. Our platform offers:</p>
+            <ul>
+                <li>Real-time collaborative design tools</li>
+                <li>AI-powered asset generation</li>
+                <li>Cross-platform compatibility</li>
+                <li>Enterprise-grade security</li>
+            </ul>
+        </section>
+
+        <section class="stats-grid" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="sr-only">Platform Statistics</h2>
+            <div class="stat-card">
+                <div class="stat-number">15M+</div>
+                <div class="stat-label">Assets Created</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+        </section>
+
+        <section class="team-grid" aria-labelledby="team-heading">
+            <h2 id="team-heading" class="sr-only">Leadership Team</h2>
+            <figure class="team-member">
+                <img src="https://source.unsplash.com/300x300/?portrait,ceo" 
+                     alt="Alex Johnson, CEO & Founder of Ajura Platform" 
+                     loading="lazy">
+                <figcaption>
+                    <h3>Alex Johnson</h3>
+                    <p>CEO & Founder</p>
+                </figcaption>
+            </figure>
+            <figure class="team-member">
+                <img src="https://source.unsplash.com/300x300/?portrait,cto" 
+                     alt="Sarah Chen, Chief Technology Officer of Ajura Platform" 
+                     loading="lazy">
+                <figcaption>
+                    <h3>Sarah Chen</h3>
+                    <p>Chief Technology Officer</p>
+                </figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <script>
+        // Enhanced cube interaction with touch support
+        const cube = document.querySelector('.feature-cube');
+        let isInteracting = false;
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        function handleInteractionStart(e) {
+            isInteracting = true;
+            cube.style.animationPlayState = 'paused';
+            
+            if (e.touches) {
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+            } else {
+                currentX = e.clientX;
+                currentY = e.clientY;
+            }
+        }
+
+        function handleInteractionMove(e) {
+            if (!isInteracting) return;
+            
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            const deltaX = clientX - currentX;
+            const deltaY = clientY - currentY;
+            
+            targetX += deltaX * 0.5;
+            targetY += deltaY * 0.5;
+            
+            currentX = clientX;
+            currentY = clientY;
+            
+            cube.style.transform = `rotateX(${15 + targetY * 0.1}deg) rotateY(${targetX * 0.1}deg)`;
+        }
+
+        function handleInteractionEnd() {
+            isInteracting = false;
+            cube.style.animationPlayState = 'running';
+        }
+
+        // Mouse events
+        cube.addEventListener('mousedown', handleInteractionStart);
+        cube.addEventListener('mousemove', handleInteractionMove);
+        cube.addEventListener('mouseup', handleInteractionEnd);
+        cube.addEventListener('mouseleave', handleInteractionEnd);
+
+        // Touch events
+        cube.addEventListener('touchstart', handleInteractionStart);
+        cube.addEventListener('touchmove', handleInteractionMove);
+        cube.addEventListener('touchend', handleInteractionEnd);
+    </script>
+</body>
+</html>

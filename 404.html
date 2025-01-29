@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .error-code {
+            font-size: 15rem;
+            font-weight: 900;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        .content {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            transform: translateZ(50px);
+        }
+
+        .home-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateZ(30px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+
+        .home-btn:hover {
+            transform: translateZ(50px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(255,107,107,0.5);
+        }
+
+        .home-btn:active {
+            transform: translateZ(30px) scale(0.95);
+        }
+
+        .background {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 50%, rgba(255,107,107,0.1) 50%);
+            background-size: 5px 5px;
+            animation: move 20s linear infinite;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateX(20deg) rotateY(20deg);
+            }
+            50% {
+                transform: translateY(-20px) rotateX(-20deg) rotateY(-20deg);
+            }
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Entrance animations */
+        .error-code {
+            animation: enter 1s ease-out forwards;
+        }
+
+        .content {
+            animation: slideUp 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes enter {
+            from {
+                transform: scale(0) rotateX(90deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 10rem;
+            }
+            .message {
+                font-size: 1.2rem;
+            }
+            .home-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="content">
+            <div class="background"></div>
+            <p class="message">Oops! The page you're looking for has vanished into the void.</p>
+            <button class="home-btn" onclick="window.location.href='/'">Take Me Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive 3D effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.container');
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            
+            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset animation on click
+        document.querySelector('.container').addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            container.style.animation = 'none';
+            requestAnimationFrame(() => {
+                container.style.animation = '';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJURA Modern Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Smooth transitions */
+        * {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Modern sidebar */
+        .dashboard-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Modern buttons */
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main content */
+        .dashboard-main {
+            margin-left: 280px;
+            padding: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Card hover effect */
+        .data-card {
+            background: linear-gradient(145deg, rgba(45, 55, 72, 0.6), rgba(30, 41, 59, 0.6));
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transform: translateY(0);
+        }
+
+        .data-card:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, rgba(63, 76, 107, 0.6), rgba(45, 55, 72, 0.6));
+        }
+
+        /* 3D Preview Orb */
+        .preview-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+
+        #previewCanvas {
+            border-radius: 24px;
+            box-shadow: 0 0 80px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Grid layout */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* Floating buttons */
+        .action-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar with proper buttons -->
+    <nav class="dashboard-sidebar">
+        <h2 style="margin-bottom: 3rem;">AJURA</h2>
+        <div class="sidebar-buttons" style="display: grid; gap: 1rem;">
+            <button class="btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
+                Dashboard
+            </button>
+            <button class="btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                </svg>
+                Analytics
+            </button>
+            <button class="btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                </svg>
+                Templates
+            </button>
+            <button class="btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+                Profile
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Header -->
+        <header style="margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Welcome back, Designer</h1>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>📈 Monthly Revenue</h3>
+                    <h1 style="margin: 1rem 0;">$8,420</h1>
+                    <button class="btn" style="width: 100%; justify-content: center;">
+                        View Report
+                    </button>
+                </div>
+                <div class="data-card">
+                    <h3>🚀 Performance</h3>
+                    <div style="margin: 1rem 0; height: 100px;" id="performanceChart"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 3D Preview Section -->
+        <div class="preview-container">
+            <canvas id="previewCanvas"></canvas>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn" id="uploadBtn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                </svg>
+            </button>
+            <button class="btn" id="settingsBtn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                </svg>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Smooth GSAP Animations
+        gsap.from(".data-card", {
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "power4.out"
+        });
+
+        // Three.js Scene
+        let scene, camera, renderer, controls;
+
+        function init3DScene() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, 600/400, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#previewCanvas'),
+                antialias: true,
+                alpha: true
+            });
+
+            renderer.setSize(600, 400);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Simple geometry for better performance
+            const geometry = new THREE.IcosahedronGeometry(1, 2);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x6366f1,
+                metalness: 0.3,
+                roughness: 0.2
+            });
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            camera.position.z = 3;
+
+            // Smooth controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Button interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gsap.to(btn, {
+                    duration: 0.2,
+                    scale: 0.95,
+                    ease: "power2.out",
+                    yoyo: true,
+                    repeat: 1
+                });
+            });
+        });
+
+        // Initialize
+        window.onload = init3DScene;
+        window.addEventListener('resize', () => {
+            camera.aspect = 600 / 400;
+            camera.updateProjectionMatrix();
+            renderer.setSize(600, 400);
+        });
+    </script>
+</body>
+</html>
