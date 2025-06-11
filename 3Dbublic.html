@@ -1,66 +1,179 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
-import { Lock } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notice from Northbridge National Bank</title>
+<style>
+  /* Reset & base */
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #1f2937; /* cool dark gray */
+  }
+  /* Container */
+  .container {
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    color: #b91c1c; /* red-700 */
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  p {
+    margin-top: 0;
+    line-height: 1.4;
+  }
+  .intro {
+    text-align: center;
+    color: #374151;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .balance-info {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .italic {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+  select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #374151 50%),
+      linear-gradient(135deg, #374151 50%, transparent 50%),
+      linear-gradient(to right, #d1d5db, #d1d5db);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - 25px) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+  }
+  button {
+    width: 100%;
+    padding: 0.65rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    background-color: #2563eb; /* blue-600 */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button:hover {
+    background-color: #1d4ed8; /* blue-700 */
+  }
+  .lock-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    fill: white;
+  }
+  .footer-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .footer-text a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  /* Responsive */
+  @media (min-width: 640px) {
+    body {
+      display: none; /* mobile only site */
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container" role="main">
+    <h1>Notice from Northbridge National Bank</h1>
+    <p class="intro">
+      As of June 10, 2025, Northbridge National Bank has ceased all banking operations due to federally supervised insolvency proceedings.
+    </p>
 
-export default function BankClosureNotice() {
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-start p-6 max-w-sm mx-auto">
-      <Card className="w-full shadow-md border border-gray-200 rounded-lg">
-        <CardContent className="p-5 space-y-5">
-          <div className="text-center">
-            <h1 className="text-xl font-bold text-red-700">Notice from Crestwood Bank</h1>
-            <p className="text-gray-700 mt-1 text-sm leading-relaxed">
-              As of June 10, 2025, Crestwood Bank has officially ceased all banking operations due to insolvency proceedings initiated under federal oversight.
-            </p>
-          </div>
+    <p class="balance-info">
+      A remaining insured balance of <strong>25068.47</strong> will be automatically transferred to a bank of your choice.
+    </p>
+    <p class="italic">
+      You do not need to re-submit your personal information. Just confirm the destination bank below.
+    </p>
 
-          <div className="text-sm text-gray-800">
-            <p className="mb-2">
-              A remaining balance of <strong>25048.47</strong> will be automatically transferred to a bank of your choice.
-            </p>
-            <p className="text-gray-600 italic">
-              You do not need to re-submit your personal information. Just confirm the destination bank below.
-            </p>
-          </div>
+    <form id="transfer-form" aria-label="Confirm destination bank">
+      <label for="bank-select">Choose Receiving Bank</label>
+      <select id="bank-select" name="bank" required aria-required="true" aria-describedby="select-help">
+        <option value="" disabled selected>Select your preferred bank</option>
+        <option value="usbank">U.S. Bank</option>
+        <option value="chase">JPMorgan Chase</option>
+        <option value="boa">Bank of America</option>
+        <option value="wellsfargo">Wells Fargo</option>
+        <option value="citi">CitiBank</option>
+        <option value="other">Other (manually arranged)</option>
+      </select>
 
-          <form className="space-y-4 mt-3">
-            <div>
-              <label className="text-sm font-medium">Choose Receiving Bank</label>
-              <Select required>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select your preferred bank" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="usbank">U.S. Bank</SelectItem>
-                  <SelectItem value="chase">JPMorgan Chase</SelectItem>
-                  <SelectItem value="boa">Bank of America</SelectItem>
-                  <SelectItem value="wellsfargo">Wells Fargo</SelectItem>
-                  <SelectItem value="citi">CitiBank</SelectItem>
-                  <SelectItem value="other">Other (manually arranged)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+      <button type="submit" aria-label="Confirm destination bank and authorize transfer">
+        <svg class="lock-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 1a4 4 0 00-4 4v3H7a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2v-9a2 2 0 00-2-2h-1V5a4 4 0 00-4-4zm-2 7V5a2 2 0 114 0v3h-4z"/>
+        </svg>
+        Confirm Destination
+      </button>
+    </form>
 
-            <Button className="w-full py-3 text-base bg-blue-600 hover:bg-blue-700">
-              <Lock className="w-4 h-4 mr-2 inline" />
-              Confirm Destination
-            </Button>
-          </form>
+    <p class="footer-text" id="select-help">
+      Transfers will begin processing automatically within 30 calendar days due to regulatory reviews.<br />
+      For additional information, visit <a href="https://www.northbridgenational.com/faq" target="_blank" rel="noopener noreferrer">www.northbridgenational.com/faq</a>.
+    </p>
+  </main>
 
-          <p className="text-xs text-gray-500 text-center mt-6">
-            Transfers will begin processing automatically within 30 calendar days due to regulatory reviews.
-            For additional information, visit <a className="underline" href="#">www.crestwoodbank.com/faq</a>.
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
+<script>
+  const form = document.getElementById('transfer-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const select = form.elements['bank'];
+    if (!select.value) {
+      alert('Please select a bank to continue.');
+      select.focus();
+      return;
+    }
+    // Simple confirmation alert for demo:
+    alert(`Thank you. Your $25.47 will be transferred to ${select.options[select.selectedIndex].text}. The process may take up to 30 calendar days.`);
+    form.reset();
+  });
+</script>
+</body>
+</html>
 
