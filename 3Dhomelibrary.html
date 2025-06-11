@@ -3,388 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajura 3D Web Builder </title>
+    <title>Important Notice: Metropolitan Trust Bank Closure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Lisätty responsiivisia muutoksia ja uusia tyylejä */
-        .preview-window canvas {
-            width: 100% !important;
-            height: 100% !important;
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #2c5282;
+            --accent: #c53030;
+            --warning: #e53e3e;
+            --light: #f8f9fa;
+            --dark: #1a202c;
+            --gray: #718096;
+            --light-gray: #e2e8f0;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(45deg, #0a0a2e, #1a1a4a);
-            color: #fff;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
-        .nav {
-            padding: 1.5rem;
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin: 20px;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ecc94b;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .status {
+            background: var(--accent);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-content {
+            padding: 35px;
+        }
+        
+        .alert-banner {
+            background: #fffaf0;
+            border: 1px solid #ecc94b;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+        }
+        
+        .alert-icon {
+            color: var(--warning);
+            font-size: 2.2rem;
+            min-width: 40px;
+        }
+        
+        .announcement {
+            margin-bottom: 30px;
+        }
+        
+        .announcement h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        .announcement p {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .funds-notice {
+            background: #f0f7ff;
+            border-left: 4px solid var(--secondary);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .funds-amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 15px 0;
+            letter-spacing: -1px;
+        }
+        
+        .action-section {
+            background: #f8fafc;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 35px 0;
+        }
+        
+        .action-section h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 4px;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+        
+        .timeline-step {
+            display: flex;
+            margin-bottom: 40px;
             position: relative;
             z-index: 2;
         }
-
-        .logo {
-            font-size: 2rem;
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-icon {
+            background: white;
+            border: 3px solid var(--secondary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 700;
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
-        }
-
-        .main-content {
-            padding: 4rem 1rem;
+            margin-right: 25px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: var(--secondary);
             position: relative;
-            z-index: 1;
         }
-
-        .hero {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0 1rem;
+        
+        .step-content {
+            flex: 1;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.3));
+        
+        .step-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
-
-        .builder-interface {
-            margin-top: 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.08);
-            padding: 2rem;
+        
+        .step-content p {
+            color: var(--gray);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .step-duration {
+            display: inline-block;
+            background: #e6fffa;
+            color: #234e52;
+            padding: 3px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            max-width: 1200px;
-            margin: 4rem auto;
-        }
-
-        .control-panel {
-            padding: 1rem;
-            position: relative;
-        }
-
-        .preview-window {
-            height: 70vh;
-            min-height: 500px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
-        }
-
-        button {
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            margin-top: 10px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
-        .tools {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .tool-item {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+        
+        .deadline {
+            background: #fff5f5;
+            padding: 25px;
             border-radius: 8px;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
+            margin: 35px 0;
+            border: 1px solid #fed7d7;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .deadline-text {
+            font-weight: 800;
+            color: var(--warning);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .contact-box {
+            flex: 1;
+            min-width: 200px;
+            background: var(--light);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+        }
+        
+        .contact-box h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
+            color: var(--dark);
+        }
+        
+        .contact-icon {
+            color: var(--secondary);
+            min-width: 24px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: #a0aec0;
+            padding: 30px;
+            text-align: center;
             font-size: 0.9rem;
         }
-
-        /* Lisätty hover-efektejä ja aktiivinen tila */
-        .tool-item:hover {
-            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
-            border-color: #00ffff;
-            transform: translateY(-3px);
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 20px 0;
         }
-
-        .tool-item.active {
-            background: rgba(0, 255, 255, 0.15);
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        
+        .footer a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 500;
         }
-
+        
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 25px;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+        
+        .disclaimer {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #718096;
+            line-height: 1.7;
+        }
+        
+        .progress-container {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: var(--light-gray);
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 25%;
+            background: linear-gradient(to right, var(--secondary), #4299e1);
+            border-radius: 6px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.9; }
+        }
+        
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        
+        .progress-status {
+            text-align: center;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        
         @media (max-width: 768px) {
-            .builder-interface {
-                grid-template-columns: 1fr;
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
             }
             
-            h1 {
-                font-size: 2.5rem;
+            .logo {
+                justify-content: center;
             }
             
-            .preview-window {
-                height: 50vh;
+            .funds-amount {
+                font-size: 1.8rem;
+            }
+            
+            .contact-box {
+                min-width: 100%;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+            
+            .timeline-step {
+                flex-direction: column;
+            }
+            
+            .step-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .timeline::before {
+                left: 22px;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="logo">AJURA </div>
-        <button>subcribe</button>
-    </nav>
-
-    <div class="main-content">
-        <div class="hero">
-            <h1>Advanced 3D Builder</h1>
-            <p>Explore our expanded library of 3D shapes and models</p>
-        </div>
-
-        <div class="builder-interface">
-            <div class="control-panel">
-                <h3>3D Shapes Library</h3>
-                <div class="tools">
-                    <div class="tool-item active" data-geometry="icosahedron">Icosahedron</div>
-                    <div class="tool-item" data-geometry="box">Cube</div>
-                    <div class="tool-item" data-geometry="sphere">Sphere</div>
-                    <div class="tool-item" data-geometry="torus">Torus</div>
-                    <div class="tool-item" data-geometry="cylinder">Cylinder</div>
-                    <div class="tool-item" data-geometry="dodecahedron">Dodecahedron</div>
-                    <div class="tool-item" data-geometry="octahedron">Octahedron</div>
-                    <div class="tool-item" data-geometry="tetrahedron">Tetrahedron</div>
-                    <div class="tool-item" data-geometry="cone">Cone</div>
-                    <div class="tool-item" data-geometry="ring">Ring</div>
-                    <div class="tool-item" data-geometry="capsule">Capsule</div>
-                    <div class="tool-item" data-geometry="lathe">Lathe</div>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-university logo-icon"></i>
+                <div class="logo-text">Metropolitan Trust Bank</div>
+            </div>
+            <div class="status">UNDER FDIC LIQUIDATION</div>
+        </header>
+        
+        <main class="main-content">
+            <div class="alert-banner">
+                <i class="fas fa-exclamation-triangle alert-icon"></i>
+                <div>
+                    <h3>URGENT ANNOUNCEMENT</h3>
+                    <p>Please read this important message regarding the liquidation of Metropolitan Trust Bank.</p>
                 </div>
             </div>
-            <div class="preview-window" id="preview"></div>
-        </div>
+            
+            <section class="announcement">
+                <h1>Important Notice: Metropolitan Trust Bank Closure</h1>
+                
+                <p>Dear Valued Customer,</p>
+                
+                <p>It is with profound regret that we announce the closure of Metropolitan Trust Bank, effective June 11, 2025. Following our declaration of bankruptcy on June 5, 2025, federal regulators have appointed the Federal Deposit Insurance Corporation (FDIC) as receiver.</p>
+                
+                <p>After 35 years of service, economic challenges and unprecedented market conditions have made it impossible for us to continue operations. This decision was not made lightly and comes after exhaustive efforts to secure the bank's future.</p>
+                
+                <div class="funds-notice">
+                    <p>Your account balance is protected by FDIC insurance:</p>
+                    <p class="funds-amount">$25048 (25047.60 cents)</p>
+                    <p>This amount will be securely transferred to your chosen financial institution. Please note that the transfer process will take approximately 30-45 business days to complete after verification.</p>
+                </div>
+                
+                <p>We sincerely apologize for the inconvenience and concern this situation may cause. Our team is working diligently with FDIC representatives to ensure an orderly transition of your funds.</p>
+            </section>
+            
+            <div class="progress-container">
+                <h3>Fund Transfer Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-labels">
+                    <span>Initiated</span>
+                    <span>Verification</span>
+                    <span>Processing</span>
+                    <span>Completed</span>
+                </div>
+                <div class="progress-status">Verification in Progress (Estimated Completion: July 30, 2025)</div>
+            </div>
+            
+            <div class="deadline">
+                <p class="deadline-text">ACTION REQUIRED BY JULY 1, 2025</p>
+                <p>To ensure uninterrupted access to your funds, please provide your new banking details by the deadline.</p>
+            </div>
+            
+            <section class="action-section">
+                <h2>Fund Transfer Timeline & Process</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="step-icon">1</div>
+                        <div class="step-content">
+                            <h3>Account Verification</h3>
+                            <p>Our liquidation team is currently verifying all account details and balances. This process ensures accuracy and security for all transfers.</p>
+                            <div class="step-duration">7-10 business days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-icon">2</div>
+                        <div class="step-content">
+                            <h3>New Bank Selection</h3>
+                            <p>You must select a new financial institution and provide account details through our secure portal or by contacting our support team.</p>
+                            <div class="step-duration">Deadline: July 1, 2025</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-icon">3</div>
+                        <div class="step-content">
+                            <h3>Regulatory Review</h3>
+                            <p>The FDIC will review all transfer requests to ensure compliance with banking regulations and security protocols.</p>
+                            <div class="step-duration">10-15 business days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-icon">4</div>
+                        <div class="step-content">
+                            <h3>Funds Transfer</h3>
+                            <p>Your funds will be electronically transferred to your new bank account. You'll receive confirmation when the transfer is complete.</p>
+                            <div class="step-duration">5-10 business days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-icon">5</div>
+                        <div class="step-content">
+                            <h3>Account Closure</h3>
+                            <p>Your Metropolitan Trust Bank account will be formally closed, and you'll receive final documentation for your records.</p>
+                            <div class="step-duration">3-5 business days</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="disclaimer">
+                <p><strong>Important Notice:</strong> The transfer process typically takes 30-45 business days from the date of verification completion. If we do not receive your transfer instructions by July 1, 2025, your funds will be transferred to a holding account with the FDIC, where they will remain accessible but may require additional steps to retrieve. FDIC insurance covers accounts up to $250,000. Some delays may occur due to regulatory requirements or banking partner processing times.</p>
+            </div>
+            
+            <section class="contact">
+                <div class="contact-box">
+                    <h3>Customer Support</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div>1-888-555-4362<br><small>Mon-Fri: 8am-8pm EST</small></div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>transfersupport@metrobank-liquidation.com</div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-lock contact-icon"></i>
+                        <div>Secure Online Portal: portal.metrobank-liquidation.com</div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>Liquidation Office: 245 Financial District, New York, NY 10004</div>
+                    </div>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>Regulatory Contacts</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-landmark contact-icon"></i>
+                        <div>FDIC Consumer Hotline: 1-877-275-3342</div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-balance-scale contact-icon"></i>
+                        <div>Federal Reserve Board: 1-202-452-3000</div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-gavel contact-icon"></i>
+                        <div>Bankruptcy Court: Case No. BK-2025-07265</div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-user-shield contact-icon"></i>
+                        <div>Consumer Financial Protection Bureau: 1-855-411-2372</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">Liquidation FAQ</a>
+                <a href="#">Account Verification</a>
+                <a href="#">FDIC Insurance</a>
+                <a href="#">Transfer Process</a>
+                <a href="#">Secure Portal</a>
+                <a href="#">Court Documents</a>
+            </div>
+            <p class="copyright">© 2025 Metropolitan Trust Bank Liquidation Trust. All rights reserved. This institution is no longer accepting deposits or new accounts. Accounts are in the process of being closed under FDIC supervision. Case No. BK-2025-07265.</p>
+        </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script>
-        let mainShape;
-        const scene = new THREE.Scene();
-        const preview = document.getElementById('preview');
-        
-        const camera = new THREE.PerspectiveCamera(
-            75,
-            preview.clientWidth / preview.clientHeight,
-            0.1,
-            1000
-        );
-
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true,
-            powerPreference: "high-performance"
-        });
-
-        renderer.setSize(preview.clientWidth, preview.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        preview.appendChild(renderer.domElement);
-
-        // Paranneltu partikkelijärjestelmä
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 3000;
-        const posArray = new Float32Array(particleCount * 3);
-
-        for(let i = 0; i < particleCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15;
-        }
-
-        particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particleMaterial = new THREE.PointsMaterial({
-            size: 0.004,
-            color: '#00ffff',
-            transparent: true,
-            opacity: 0.6
-        });
-        const particleMesh = new THREE.Points(particles, particleMaterial);
-        scene.add(particleMesh);
-
-        const mainMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0x00ffff,
-            metalness: 0.85,
-            roughness: 0.15,
-            transparent: true,
-            opacity: 0.92,
-            emissive: '#00ffff',
-            emissiveIntensity: 0.4
-        });
-
-        mainShape = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 3), mainMaterial);
-        scene.add(mainShape);
-
-        // Paranneltu valaistus
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-        scene.add(ambientLight);
-
-        const pointLight = new THREE.PointLight(0xff00ff, 2, 25);
-        pointLight.position.set(5, 7, 5);
-        scene.add(pointLight);
-
-        camera.position.z = 15;
-
-        const clock = new THREE.Clock();
-        let targetX = 0;
-        let targetY = 0;
-        
-        function animate() {
-            const delta = clock.getDelta();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update the progress bar with realistic values
+            const progressBar = document.querySelector('.progress-fill');
+            const progressStatus = document.querySelector('.progress-status');
             
-            mainShape.rotation.x += delta * 0.6;
-            mainShape.rotation.y += delta * 0.6;
+            // Simulate progress update
+            setTimeout(() => {
+                progressBar.style.width = '40%';
+                progressStatus.textContent = 'Verification Phase 2 (Estimated Completion: July 15, 2025)';
+            }, 2000);
             
-            particleMesh.rotation.y += delta * 0.15;
+            // Add date to the announcement
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = today.toLocaleDateString('en-US', options);
             
-            camera.position.x += (targetX - camera.position.x) * 0.03;
-            camera.position.y += (targetY - camera.position.y) * 0.03;
-
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // Uudet geometriat ja värianimaatiot
-        const colorMap = {
-            icosahedron: '#00ffff',
-            box: '#ff00ff',
-            sphere: '#00ff88',
-            cylinder: '#ff6600',
-            torus: '#aa00ff',
-            dodecahedron: '#ff4444',
-            octahedron: '#00ffcc',
-            tetrahedron: '#ccff00',
-            cone: '#ff0099',
-            ring: '#0099ff',
-            capsule: '#ff5500',
-            lathe: '#00ff55'
-        };
-
-        document.querySelectorAll('.tool-item').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.tool-item').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const geometryType = this.dataset.geometry;
-                let newGeometry;
-
-                switch(geometryType) {
-                    case 'box': newGeometry = new THREE.BoxGeometry(2, 2, 2); break;
-                    case 'sphere': newGeometry = new THREE.SphereGeometry(2, 64, 64); break;
-                    case 'cylinder': newGeometry = new THREE.CylinderGeometry(1, 1, 3, 32); break;
-                    case 'torus': newGeometry = new THREE.TorusGeometry(2, 0.6, 16, 100); break;
-                    case 'icosahedron': newGeometry = new THREE.IcosahedronGeometry(2, 3); break;
-                    case 'dodecahedron': newGeometry = new THREE.DodecahedronGeometry(2, 3); break;
-                    case 'octahedron': newGeometry = new THREE.OctahedronGeometry(2, 0); break;
-                    case 'tetrahedron': newGeometry = new THREE.TetrahedronGeometry(2, 0); break;
-                    case 'cone': newGeometry = new THREE.ConeGeometry(1.5, 3, 32); break;
-                    case 'ring': newGeometry = new THREE.RingGeometry(1, 2.5, 32); break;
-                    case 'capsule': newGeometry = new THREE.CapsuleGeometry(1, 2, 16, 32); break;
-                    case 'lathe': 
-                        const points = [];
-                        for(let i = 0; i < 10; i++) {
-                            points.push(new THREE.Vector2(Math.sin(i * 0.2) * 2 + 1, (i - 5) * 0.4));
-                        }
-                        newGeometry = new THREE.LatheGeometry(points, 32);
-                        break;
-                }
-
-                // Värianimaatio
-                gsap.to(mainMaterial.color, {
-                    duration: 0.8,
-                    r: parseInt(colorMap[geometryType].slice(1,3), 16)/255,
-                    g: parseInt(colorMap[geometryType].slice(3,5), 16)/255,
-                    b: parseInt(colorMap[geometryType].slice(5,7), 16)/255
-                });
-
-                gsap.to(mainShape.scale, {
-                    x: 0.1,
-                    y: 0.1,
-                    z: 0.1,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        mainShape.geometry.dispose();
-                        mainShape.geometry = newGeometry;
-                        gsap.to(mainShape.scale, {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            duration: 0.6,
-                            ease: "elastic.out(1.2, 0.4)"
-                        });
-                    }
-                });
+            const dateElements = document.querySelectorAll('.current-date');
+            dateElements.forEach(el => {
+                el.textContent = dateString;
             });
-        });
-
-        function handleResize() {
-            const width = preview.clientWidth;
-            const height = preview.clientHeight;
             
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-        }
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        document.addEventListener('mousemove', (e) => {
-            targetX = (e.clientX / window.innerWidth - 0.5) * 4;
-            targetY = -(e.clientY / window.innerHeight - 0.5) * 3;
+            // Add a realistic note about transfer time
+            const fundsNotice = document.querySelector('.funds-notice');
+            const note = document.createElement('p');
+            note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Note:</strong> Transfers typically take 30-45 business days to complete after verification due to regulatory requirements and banking partner processing times.';
+            note.style.marginTop = '15px';
+            note.style.padding = '10px';
+            note.style.background = '#ebf8ff';
+            note.style.borderRadius = '6px';
+            note.style.borderLeft = '3px solid #4299e1';
+            fundsNotice.appendChild(note);
         });
-
-        // Lisätty zoom-toiminnallisuus
-        let zoomLevel = 15;
-        document.addEventListener('wheel', (e) => {
-            zoomLevel += e.deltaY * 0.01;
-            zoomLevel = Math.min(Math.max(10, zoomLevel), 25);
-            gsap.to(camera.position, {
-                z: zoomLevel,
-                duration: 0.3
-            });
-        });
-
-        // Alkuanimaatiot
-        gsap.from(".hero", { duration: 1.5, y: 80, opacity: 0, ease: "expo.out" });
-        gsap.from(".builder-interface", { duration: 1.2, y: 60, opacity: 0, delay: 0.4, ease: "power4.out" });
-        gsap.from(".tool-item", { duration: 0.8, scale: 0, opacity: 0, stagger: 0.08, ease: "back.out(1.7)", delay: 0.6 });
     </script>
 </body>
 </html>
